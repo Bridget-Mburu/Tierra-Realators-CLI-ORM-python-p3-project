@@ -66,15 +66,16 @@ click function is used to enable one to interact with the program and takes care
 - python3 models.py add-land-owner <"name"> <"phone_number"> <"date_of_acquisition">
 
 `add-lands-manager`
-- python3 models.py add-lands-manager 
-                   <land_id> 
-                   <manager_id>
+- python3 models.py add-lands-manager  
+- Enter the prompt for <land_id> <manager_id>
 
 `add-property`
-- python3 models.py add-property <"name"> <"gender"> <"contact"> <estate_id>
+- python3 models.py add-property
+- Enter the prompt for <name> <gender> <contact> <estate_id>
 
 `add-real-estate`
-- python3 models.py add-real-estate <"property_name">
+- python3 models.py add-real-estate 
+- Enter the prompt <property_name>
 
 `listing-lands`
 - python3 models.py listing-lands
@@ -87,7 +88,8 @@ click function is used to enable one to interact with the program and takes care
 - A promp of ID pops up -- Enter the id of the manager you would like to remove from the program
 
 `show-land`
-- python3 models.py show-land <land_id>
+- python3 models.py show-land 
+- Enter the <land_id> to get the land by id
 
 ## Author
 Bridget Mburu - Initial work
