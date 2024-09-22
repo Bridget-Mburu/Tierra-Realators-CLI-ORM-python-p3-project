@@ -6,6 +6,7 @@ from app import Base, Land_Owner, Property_Manager, Land, Real_Estate, LandsMana
 
 # Connecting to the database
 engine = create_engine('sqlite:///management.db')
+
 # Ineracting with the database
 Session = sessionmaker(bind=engine)
 
