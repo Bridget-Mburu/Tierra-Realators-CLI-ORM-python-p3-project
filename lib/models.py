@@ -99,22 +99,18 @@ def remove_manager(manager_id):
 
         sesh.close()
 
-#removing a land from the db
+#method to add the lands managers relationship
 @cli.command()
-@click.option('--land_id', prompt = 'Land ID')
-def remove_land(land_id):
+@click.argument('land_id')
+@click.argument('manager_id')
+def add_lands_manager(land_id, manager_id):
     sesh = Session()
-    manager = sesh.query(Land).filter(Land.land_id == land_id).first()
+    new_landsManager = LandsManager(land_id=land_id, manager_id=manager_id)
+    sesh.add(new_landsManager)
+    sesh.commit()
+    sesh.close()
+    click.echo(f"Land ID: {land_id} to Manager ID: {manager_id}")
 
-    if manager:
-        sesh.delete(manager)
-        sesh.commit()
-        click.echo(f"ID {land_id} successfully deleted")
-
-    else:
-        click.echo(f"ID {land_id} Managaer not found")
-
-        sesh.close()
 
 # method to add land owner to the database 
 @cli.command()
