@@ -32,7 +32,7 @@ class Property_Manager(Base):
 
     estate_id = Column(Integer, ForeignKey('real_estate.estate_id'))
     estate = relationship('Real_Estate', back_populates = 'managers')
-    owner = relationship('Land_Owners', back_populates = 'manager')
+    owner = relationship('Land_Owner', back_populates = 'manager')
     lands_managers = relationship('LandsManager', back_populates = 'manager')
 
 class Land(Base):
@@ -43,7 +43,7 @@ class Land(Base):
     size = Column(String(20))
 
     owner_id = Column(Integer, ForeignKey('land_owners.owner_id'), unique = True)
-    owner = relationship('Land_Owners', back_populates='lands')
+    owner = relationship('Land_Owner', back_populates='lands')
     lands_managers = relationship('LandsManager', back_populates = 'land')
 
 
