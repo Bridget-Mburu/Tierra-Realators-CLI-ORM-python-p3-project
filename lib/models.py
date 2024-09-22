@@ -6,7 +6,6 @@ from app import Base, Land_Owner, Property_Manager, Land, Real_Estate, LandsMana
 
 # Connecting to the database
 engine = create_engine('sqlite:///management.db')
-
 # Ineracting with the database
 Session = sessionmaker(bind=engine)
 
@@ -97,6 +96,23 @@ def remove_manager(manager_id):
 
     else:
         click.echo(f"ID {manager_id} Managaer not found")
+
+        sesh.close()
+
+#removing a land from the db
+@cli.command()
+@click.option('--land_id', prompt = 'Land ID')
+def remove_land(land_id):
+    sesh = Session()
+    manager = sesh.query(Land).filter(Land.land_id == land_id).first()
+
+    if manager:
+        sesh.delete(manager)
+        sesh.commit()
+        click.echo(f"ID {land_id} successfully deleted")
+
+    else:
+        click.echo(f"ID {land_id} Managaer not found")
 
         sesh.close()
 
