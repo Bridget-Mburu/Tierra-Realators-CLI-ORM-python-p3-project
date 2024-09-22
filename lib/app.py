@@ -45,7 +45,7 @@ class Land(Base):
     size = Column(String(20))
 
     # one to many relationship for an owner can have many lands
-    owner_id = Column(Integer, ForeignKey('land_owners.owner_id'), unique = True)
+    owner_id = Column(Integer, ForeignKey('land_owners.owner_id'))
     owner = relationship('Land_Owner', back_populates='lands')
     lands_managers = relationship('LandsManager', back_populates = 'land')
 
