@@ -1,4 +1,4 @@
-# importing of the required to run the program
+# importing of the required items to run the program
 import click
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -16,11 +16,17 @@ Session = sessionmaker(bind=engine)
 def cli():
     pass 
 
+# while loop to exit the loop
+@cli.command()
+def exit_program():
+    click.echo("Exiting the program!!")
+    raise click.Abort()
+
 # method of adding land to the db and the argument required
 @cli.command()
-@click.argument('place')
-@click.argument('size')
-@click.argument('owner_id')
+@click.option('--place', prompt = 'Enter the land place: ')
+@click.option('--size', prompt = 'Enter the land size: ')
+@click.option('--owner_id', prompt = 'Enter the Land Owner ID: ')
 def add_land(place, size, owner_id):
     sesh = Session()
     new_land = Land(place=place, size=size, owner_id=owner_id)
@@ -40,11 +46,11 @@ def listing_lands():
     for land in land_list:
         click.echo(f"Land ID: {land[0]}, Place: {land[1]}, Size: {land[2]}, Owner ID: {land[3]}")
 
-        sesh.close()
+    sesh.close()
 
 # to view details of a specific land by getting a land by id 
 @cli.command()
-@click.argument('land_id')
+@click.option('--land_id', prompt = 'Enter Land ID')
 def show_land(land_id):
     sesh = Session()
     land = sesh.query(Land).filter(Land.land_id == land_id).first()
@@ -58,10 +64,10 @@ def show_land(land_id):
 
 # method to add a property manager in the database
 @cli.command()
-@click.argument('name')
-@click.argument('gender')
-@click.argument('contact')
-@click.argument('estate_id')
+@click.option('--name', prompt = 'Enter Name')
+@click.option('--gender', type= click.Choice(["Male", "Female"]), prompt = 'Enter Gender')
+@click.option('--contact', prompt = 'Contact')
+@click.option('--estate_id', prompt = 'Estate id')
 def add_property_manager(name, gender, contact, estate_id):
     sesh = Session()
     new_manager = Property_Manager(name=name, gender=gender, contact=contact, estate_id=estate_id)
@@ -102,8 +108,8 @@ def remove_manager(manager_id):
 
 #method to add the lands managers relationship
 @cli.command()
-@click.argument('land_id')
-@click.argument('manager_id')
+@click.option('--land_id', prompt = 'Enter Land ID: ')
+@click.option('--manager_id', prompt = 'Enter Manager ID: ')
 def add_lands_manager(land_id, manager_id):
     sesh = Session()
     new_landsManager = LandsManager(land_id=land_id, manager_id=manager_id)
@@ -115,10 +121,10 @@ def add_lands_manager(land_id, manager_id):
 
 # method to add land owner to the database 
 @cli.command()
-@click.argument('name')
-@click.argument('phone_number')
-@click.argument('date_of_acquisition')
-@click.argument('manager_id')
+@click.option('--name', prompt = "Enter land owner's name")
+@click.option('--phone_number', prompt = 'Enter Phone Number: ')
+@click.option('--date_of_acquisition', prompt = 'Enter the Date of Acquisition')
+@click.option('--manager_id', prompt = 'Enter Manager ID')
 def add_land_owner(name, phone_number, date_of_acquisition, manager_id):
     sesh = Session()
     new_land_owner = Land_Owner(name=name, phone_number=phone_number, date_of_acquisition=date_of_acquisition, manager_id=manager_id)
@@ -129,7 +135,7 @@ def add_land_owner(name, phone_number, date_of_acquisition, manager_id):
 
 # method to add areal estate to the program
 @cli.command()
-@click.argument('property_name')
+@click.option('--property_name', prompt = 'Enter Property Manager: ')
 def add_real_estate(property_name):
     sesh = Session()
     new_real_estate = Real_Estate(property_name=property_name)
@@ -140,4 +146,8 @@ def add_real_estate(property_name):
 
 # connects with the app.py
 if __name__ == '__main__':
-    cli()
+    while True:
+        try:
+            cli()
+        except click.Abort:
+            break

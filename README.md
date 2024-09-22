@@ -66,7 +66,9 @@ click function is used to enable one to interact with the program and takes care
 - python3 models.py add-land-owner <"name"> <"phone_number"> <"date_of_acquisition">
 
 `add-lands-manager`
-- python3 models.py add-lands-manager <land_id> <manager_id>
+- python3 models.py add-lands-manager 
+                   <land_id> 
+                   <manager_id>
 
 `add-property`
 - python3 models.py add-property <"name"> <"gender"> <"contact"> <estate_id>
