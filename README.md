@@ -60,16 +60,16 @@ click function is used to enable one to interact with the program
 
 ###### The following are displayed in the menu and this are the command lines to execute to interact with the database
 `add-land`
-- python3 models.py add-land "<place>" "<size acres>" <owner_id>
+- python3 models.py add-land '<place>; '<size acres>' <owner_id>
 
 `add-land-owner`
-- python3 models.py add-land-owner "<name>" "<phone_number>" "<date_of_acquisition>"
+- python3 models.py add-land-owner '<name>' '<phone_number>' '<date_of_acquisition>'
 
 `add-property`
-- python3 models.py add-property "<name>" "<gender>" "<contact>" <estate_id>
+- python3 models.py add-property '<name>' '<gender>' '<contact>' <estate_id>
 
 `add-real-estate`
-- python3 models.py add-real-estate "<property_name>"
+- python3 models.py add-real-estate '<property_name>'
 
 `listing-lands`
 - python3 models.py listing-lands
