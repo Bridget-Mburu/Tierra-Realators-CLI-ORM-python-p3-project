@@ -69,7 +69,7 @@ click function is used to enable one to interact with the program
 - python3 models.py add-property '<name>' '<gender>' '<contact>' <estate_id>
 
 `add-real-estate`
-- python3 models.py add-real-estate '<property_name>'
+- python3 models.py add-real-estate <"property_name">
 
 `listing-lands`
 - python3 models.py listing-lands
