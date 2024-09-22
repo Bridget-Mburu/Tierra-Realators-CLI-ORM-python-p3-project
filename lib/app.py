@@ -30,11 +30,13 @@ class Property_Manager(Base):
     gender = Column(String(10))
     contact = Column(String(20))
 
+    # one to many relationship with the real estate
     estate_id = Column(Integer, ForeignKey('real_estate.estate_id'))
     estate = relationship('Real_Estate', back_populates = 'managers')
     owner = relationship('Land_Owner', back_populates = 'manager')
     lands_managers = relationship('LandsManager', back_populates = 'manager')
 
+# Land class initialized and the atrributes declared 
 class Land(Base):
     __tablename__ = 'lands'
 
@@ -42,6 +44,7 @@ class Land(Base):
     place = Column(String(30))
     size = Column(String(20))
 
+    # one to many relationship for an owner can have many lands
     owner_id = Column(Integer, ForeignKey('land_owners.owner_id'), unique = True)
     owner = relationship('Land_Owner', back_populates='lands')
     lands_managers = relationship('LandsManager', back_populates = 'land')
