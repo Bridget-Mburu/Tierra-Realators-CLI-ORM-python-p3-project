@@ -53,7 +53,7 @@ The tables created and modified by python ORM method are as follows:
 
 
 ### CLI
-click function is used to enable one to interact with the program
+click function is used to enable one to interact with the program and takes care of basic tasks.
 
 - To display the menu run:
     `python3 models.py`
@@ -64,6 +64,9 @@ click function is used to enable one to interact with the program
 
 `add-land-owner`
 - python3 models.py add-land-owner <"name"> <"phone_number"> <"date_of_acquisition">
+
+`add-lands-manager`
+- python3 models.py add-lands-manager <land_id> <manager_id>
 
 `add-property`
 - python3 models.py add-property <"name"> <"gender"> <"contact"> <estate_id>
