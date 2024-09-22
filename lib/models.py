@@ -1,16 +1,22 @@
+# importing of the required to run the program
 import click
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app import Base, Land_Owner, Property_Manager, Land, Real_Estate, LandsManager
 
+# Connecting to the database
 engine = create_engine('sqlite:///management.db')
+
+# Ineracting with the database
 Session = sessionmaker(bind=engine)
+
 
 @click.group()
 # entry line for CLI
 def cli():
     pass 
 
+# method of adding land to the db and the argument required
 @cli.command()
 @click.argument('place')
 @click.argument('size')
@@ -23,6 +29,7 @@ def add_land(place, size, owner_id):
     sesh.close()
     click.echo(f"Added land: {place} {size}, Owner ID {owner_id}")
 
+# method to liost all lands on the db
 @cli.command()
 def listing_lands():
     sesh = Session()
@@ -35,6 +42,7 @@ def listing_lands():
 
         sesh.close()
 
+# to view details of a specific land by getting a land by id 
 @cli.command()
 @click.argument('land_id')
 def show_land(land_id):
@@ -48,6 +56,7 @@ def show_land(land_id):
     else:
         click.echo("Land not found")
 
+# method to add a property manager in the database
 @cli.command()
 @click.argument('name')
 @click.argument('gender')
@@ -61,6 +70,7 @@ def add_property_manager(name, gender, contact, estate_id):
     sesh.close()
     click.echo(f"Property Manager {name} added successfully!!!!!!!!!")
 
+# method to list the property manager in the db
 @cli.command()
 def listing_property_managers():
     sesh = Session()
@@ -73,6 +83,7 @@ def listing_property_managers():
 
         sesh.close()
 
+# method to delete a manager from the database else if id not found error raised
 @cli.command()
 @click.option('--manager_id', prompt = 'Manager ID')
 def remove_manager(manager_id):
@@ -89,7 +100,7 @@ def remove_manager(manager_id):
 
         sesh.close()
 
-
+# method to add land owner to the database 
 @cli.command()
 @click.argument('name')
 @click.argument('phone_number')
@@ -103,6 +114,7 @@ def add_land_owner(name, phone_number, date_of_acquisition, manager_id):
     sesh.close()
     click.echo(f"Thank you {name} for purchsing land. Congratulations!!!!!")
 
+# method to add areal estate to the program
 @cli.command()
 @click.argument('property_name')
 def add_real_estate(property_name):
@@ -113,5 +125,6 @@ def add_real_estate(property_name):
     sesh.close()
     click.echo(f"{property_name} added to the program")
 
+# connects with the app.py
 if __name__ == '__main__':
     cli()
