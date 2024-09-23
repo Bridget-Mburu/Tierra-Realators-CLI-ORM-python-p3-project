@@ -50,7 +50,7 @@ def listing_lands():
 
 # to view details of a specific land by getting a land by id 
 @cli.command()
-@click.option('--land_id', prompt = 'Enter Land ID')
+@click.option('--land_id', prompt = 'Enter Land ID: ')
 def show_land(land_id):
     sesh = Session()
     land = sesh.query(Land).filter(Land.land_id == land_id).first()
@@ -64,10 +64,10 @@ def show_land(land_id):
 
 # method to add a property manager in the database
 @cli.command()
-@click.option('--name', prompt = 'Enter Name')
-@click.option('--gender', type= click.Choice(["Male", "Female"]), prompt = 'Enter Gender')
-@click.option('--contact', prompt = 'Contact')
-@click.option('--estate_id', prompt = 'Estate id')
+@click.option('--name', prompt = 'Enter Name: ')
+@click.option('--gender', type= click.Choice(["Male", "Female"]), prompt = 'Enter Gender: ')
+@click.option('--contact', prompt = 'Contact: ')
+@click.option('--estate_id', prompt = 'Estate id: ')
 def add_property_manager(name, gender, contact, estate_id):
     sesh = Session()
     new_manager = Property_Manager(name=name, gender=gender, contact=contact, estate_id=estate_id)
@@ -102,7 +102,7 @@ def remove_manager(manager_id):
         click.echo(f"ID {manager_id} successfully deleted")
 
     else:
-        click.echo(f"ID {manager_id} Managaer not found")
+        click.echo(f"ID {manager_id} Manager not found")
 
         sesh.close()
 
