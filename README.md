@@ -60,22 +60,24 @@ click function is used to enable one to interact with the program and takes care
 
 ###### The following are displayed in the menu and this are the command lines to execute to interact with the database
 `add-land`
-- python3 models.py add-land <"place"> <"size acres"> <owner_id>
+- python3 models.py add-land 
+- Enter the <place> <size in acres> <owner_id>
 
 `add-land-owner`
-- python3 models.py add-land-owner <"name"> <"phone_number"> <"date_of_acquisition">
+- python3 models.py add-land-owner 
+- Enter the <name> <phone_number> <date_of_acquisition>
 
 `add-lands-manager`
 - python3 models.py add-lands-manager  
-- Enter the prompt for <land_id> <manager_id>
+- Enter the  <land_id> <manager_id>
 
 `add-property`
 - python3 models.py add-property
-- Enter the prompt for <name> <gender> <contact> <estate_id>
+- Enter the  <name> <gender> <contact> <estate_id>
 
 `add-real-estate`
 - python3 models.py add-real-estate 
-- Enter the prompt <property_name>
+- Enter the <property_name>
 
 `listing-lands`
 - python3 models.py listing-lands
@@ -95,7 +97,7 @@ click function is used to enable one to interact with the program and takes care
 Bridget Mburu - Initial work
 
 ## Schema 
-- dbdiagram - https://dbdiagram.io/d/Tierra-Realators-66e88f1e6dde7f4149494513
+- dbdiagram - 
 
 ## Demo 
 https://www.loom.com/share/fd514bbef83a42e1b0d2b5b8e53883cc?sid=3bd5622f-dd65-471b-8f85-033c16987e22
